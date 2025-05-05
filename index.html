@@ -110,8 +110,41 @@
                     </div>
                 </div>
             </div>
+            <input type="file" id="file-upload" accept=".doc,.docx,.pdf,.txt" style="display:none" />
+            <button id="cloud-btn" class="demo-button" style="margin-top: 1rem;">Select from Cloud</button>
         </div>
     </section>
+
+    <!-- Cloud Modal -->
+    <div id="cloud-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="cloud-modal-title" tabindex="-1">
+        <div class="modal-content">
+            <button class="modal-close" id="cloud-modal-close" aria-label="Close Cloud Modal">&times;</button>
+            <h2 id="cloud-modal-title">Select from Cloud</h2>
+            <button class="cloud-option" data-provider="google">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Google_Cloud_Logo.svg" alt="Google Drive" width="40" />
+                Google Drive
+            </button>
+            <button class="cloud-option" data-provider="dropbox">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Dropbox_Icon.svg" alt="Dropbox" width="40" />
+                Dropbox
+            </button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="login-modal-title" tabindex="-1">
+        <div class="modal-content">
+            <button class="modal-close" id="login-modal-close" aria-label="Close Login Modal">&times;</button>
+            <h2 id="login-modal-title">Log In</h2>
+            <form id="login-form">
+                <label for="username">Username</label>
+                <input type="text" id="username" required />
+                <label for="password">Password</label>
+                <input type="password" id="password" required />
+                <button type="submit" class="demo-button">Log In</button>
+            </form>
+        </div>
+    </div>
 
     <!-- FAQ Section -->
     <section class="faq" id="faq">
@@ -145,6 +178,9 @@
             </div>
             <div class="footer-links">
                 <div class="link-column">
+                    <a href="https://www.ctrlsheet.ai/pricing" target="_blank" rel="noopener noreferrer">Pricing</a>
+                    <a href="https://www.ctrlsheet.ai/try" target="_blank" rel="noopener noreferrer">Try Now</a>
+                </div>
                     <h4>Product</h4>
                     <a href="#features">Features</a>
                     <a href="#pricing">Pricing</a>
