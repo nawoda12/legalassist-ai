@@ -1,35 +1,4 @@
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
 
-// FAQ Accordion functionality
-document.querySelectorAll('.faq-item').forEach(item => {
-    const title = item.querySelector('h3');
-    
-    title.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        
-        // Close all FAQs
-        document.querySelectorAll('.faq-item').forEach(faq => {
-            faq.classList.remove('active');
-        });
-        
-        // Toggle clicked FAQ
-        if (!isActive) {
-            item.classList.add('active');
-        }
-    });
-});
 
 // Demo section interactive preview
 const demoContent = document.querySelector('.window-content');
@@ -154,6 +123,8 @@ if (demoContent) {
     updateDemo();
 }
 
+
+
 // Add scroll-based animations
 const observerOptions = {
     threshold: 0.1,
@@ -175,82 +146,76 @@ document.querySelectorAll('.feature-card, .step, .faq-item').forEach(el => {
     observer.observe(el);
 });
 
-// Add CSS styles for animations
-const style = document.createElement('style');
-style.textContent = `
-    .animate-ready {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
 
-    .animate-in {
-        opacity: 1;
-        transform: translateY(0);
-    }
 
-    .demo-step {
-        transition: opacity 0.3s ease;
-    }
+// Modal functionality
+const cloudBtn = document.getElementById('cloud-btn');
+const cloudModal = document.getElementById('cloud-modal');
+const cloudModalClose = document.getElementById('cloud-modal-close');
+const loginBtn = document.getElementById('login-btn');
+const loginModal = document.getElementById('login-modal');
+const loginModalClose = document.getElementById('login-modal-close');
 
-    .progress {
-        height: 4px;
-        background: var(--accent-color);
-        transition: width 2.5s ease;
-    }
+if (cloudBtn && cloudModal && cloudModalClose) {
+    cloudBtn.addEventListener('click', () => {
+        cloudModal.style.display = 'flex';
+        cloudModal.setAttribute('aria-hidden', 'false');
+    });
 
-    .progress-bar {
-        width: 100%;
-        height: 4px;
-        background: var(--gray-200);
-        border-radius: 2px;
-        overflow: hidden;
-    }
+    cloudModalClose.addEventListener('click', () => {
+        cloudModal.style.display = 'none';
+        cloudModal.setAttribute('aria-hidden', 'true');
+    });
 
-    .upload-area {
-        border: 2px dashed var(--gray-300);
-        border-radius: 0.5rem;
-        padding: 2rem;
-        text-align: center;
-    }
+    // Close modal on outside click
+    cloudModal.addEventListener('click', (e) => {
+        if (e.target === cloudModal) {
+            cloudModal.style.display = 'none';
+            cloudModal.setAttribute('aria-hidden', 'true');
+        }
+    });
 
-    .form-preview {
-        max-width: 400px;
-        margin: 0 auto;
-    }
+    // Cloud provider buttons
+    cloudModal.querySelectorAll('.cloud-option').forEach(button => {
+        button.addEventListener('click', () => {
+            const provider = button.getAttribute('data-provider');
+            alert(`Selected cloud provider: ${provider}. Integration to be implemented.`);
+            cloudModal.style.display = 'none';
+            cloudModal.setAttribute('aria-hidden', 'true');
+        });
+    });
+}
 
-    .form-field {
-        margin-bottom: 1rem;
-    }
+if (loginBtn && loginModal && loginModalClose) {
+    loginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginModal.style.display = 'flex';
+        loginModal.setAttribute('aria-hidden', 'false');
+    });
 
-    .form-field label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-    }
+    loginModalClose.addEventListener('click', () => {
+        loginModal.style.display = 'none';
+        loginModal.setAttribute('aria-hidden', 'true');
+    });
 
-    .form-field input,
-    .form-field textarea {
-        width: 100%;
-        padding: 0.5rem;
-        border: 1px solid var(--gray-300);
-        border-radius: 0.25rem;
-    }
+    // Close modal on outside click
+    loginModal.addEventListener('click', (e) => {
+        if (e.target === loginModal) {
+            loginModal.style.display = 'none';
+            loginModal.setAttribute('aria-hidden', 'true');
+        }
+    });
 
-    .demo-button {
-        background: var(--accent-color);
-        color: white;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        font-weight: 500;
-        transition: background-color 0.2s ease;
+    // Login form submission
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Login functionality to be implemented.');
+            loginModal.style.display = 'none';
+            loginModal.setAttribute('aria-hidden', 'true');
+        });
     }
+}
 
-    .demo-button:hover {
-        background-color: #2C5282;
-    }
-`;
 
-document.head.appendChild(style);
