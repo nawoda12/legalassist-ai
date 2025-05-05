@@ -1,0 +1,5 @@
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="40" rx="4" fill="#F7FAFC"/>
+    <path d="M20 20L26 26L36 14" stroke="#3182CE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="45" y="25" font-family="Arial" font-size="12" fill="#2D3748">Law Firm 1</text>
+</svg>
